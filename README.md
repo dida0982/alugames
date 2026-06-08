@@ -51,7 +51,7 @@ O projeto aplica **manipulação do DOM**, **controle de estado via classes CSS*
 [ Screenshot após alugar um jogo ]
 ```
 
-**[🔗[ Ver demonstração ao vivo](https://alugames-alpha-red.vercel.app/)](#)** 
+**[🔗[ Link da page ](https://alugames-alpha-red.vercel.app/)](#)** 
 
 ---
 
