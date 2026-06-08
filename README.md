@@ -43,11 +43,9 @@ O projeto aplica **manipulação do DOM**, **controle de estado via classes CSS*
 
 ## 🖥️ Demonstração
 
-
 <p align="center">
   <img src="img/preview.png" alt="Preview do AluGames" width="800">
 </p>
-
 
 **[🔗[ Link da page ](https://alugames-alpha-red.vercel.app/)](#)**
 
