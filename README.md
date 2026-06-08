@@ -202,6 +202,22 @@ Projeto desenvolvido com base nos exercícios do curso de **Lógica de Programa�
 
 **Instrutores:**
 
+**Jacqueline Oliveira**
+
+<img src="https://github.com/jacqueline-oliveira.png" width="150" alt="Foto de perfil">
+
+GitHub: [github.com/jacqueline-oliveira](https://github.com/jacqueline-oliveira)
+LinkedIn: [linkedin.com/in/jacqueline-r-oliveira](https://www.linkedin.com/in/jacqueline-r-oliveira/)
+
+**Rodrigo da Silva Ferreira Caneppele**
+
+<img src="https://github.com/rcaneppele.png" width="150" alt="Foto de perfil">
+
+GitHub: [github.com/jacqueline-oliveira](https://github.com/rcaneppele)
+LinkedIn: [linkedin.com/in/rcaneppele](https://www.linkedin.com/in/rcaneppele/)
+
+---
+
 | Nome | GitHub | LinkedIn |
 |------|--------|---------|
 | Jacqueline Oliveira | [@jacqueline-oliveira](https://github.com/jacqueline-oliveira) | [linkedin.com/in/jacqueline-r-oliveira](https://www.linkedin.com/in/jacqueline-r-oliveira/) |
@@ -212,6 +228,11 @@ Projeto desenvolvido com base nos exercícios do curso de **Lógica de Programa�
 ## 👤 Autor
 
 **Guilherme Barros**
+
+<img src="https://github.com/dida0982.png" width="150" alt="Foto de perfil">
+
+GitHub: [github.com/dida0982](https://github.com/dida0982)
+LinkedIn: [linkedin.com/in/guilherme-barros-6a0369209](https://www.linkedin.com/in/guilherme-barros-6a0369209/)
 
 [![GitHub](https://img.shields.io/badge/GitHub-dida0982-181717?style=flat-square&logo=github)](https://github.com/dida0982)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-guilherme--barros-0077B5?style=flat-square&logo=linkedin)](https://www.linkedin.com/in/guilherme-barros-6a0369209/)
