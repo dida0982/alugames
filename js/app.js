@@ -3,7 +3,7 @@ function alterarStatus(id) {
     let imagem = gameClicado.querySelector( '.dashboard__item__img' );
     let botao = gameClicado.querySelector( '.dashboard__item__button' );
 
-    if ( imagem?.classList.contains( 'dashboard__item__img--rented' ) ){
+    if ( imagem.classList.contains( 'dashboard__item__img--rented' ) ){
 
         let confirmar = confirm( 'Tem certeza que deseja devolver este jogo?' );
 
