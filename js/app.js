@@ -1,12 +1,12 @@
 function alterarStatus(id) {
-    let botoes = document.querySelectorAll( '.dashboard__item__button' );
-    let botao = botoes[ id - 1 ];
+    let gameClicado = document.getElementById( `game-${ id }` );
+    let imagem = gameClicado.querySelector( '.dashboard__item__img' );
+    let botao = gameClicado.querySelector( '.dashboard__item__button' );
 
-    if ( botao.textContent === 'Alugar' ){
-        botao.textContent = 'Devolver';
-        botao.classList.add( 'dashboard__item__button--return' );
+    if (imagem.classList.contains('dashboard__item__img--rented')) {
+        imagem.classList.remove( 'dashboard__item__img--rented' );
     } else {
-        botao.textContent = 'Alugar';
-        botao.classList.remove( 'dashboard__item__button--return' );
+        imagem.classList.add( 'dashboard__item__img--rented' );
+
     }
 }
