@@ -1,24 +1,56 @@
-* {
-    margin: 0;
-    border: 0;
-    box-sizing: border-box;
+/* ==========================================================================
+   RESET CSS — AluGames
+   Zera estilos padrão do navegador para garantir consistência entre browsers.
+   ========================================================================== */
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  box-sizing: border-box;
 }
 
-ul {
-    list-style: none;
-    margin-block: 0;
-    padding-inline: 0;
+html {
+  /* Garante scroll suave em toda a página */
+  scroll-behavior: smooth;
+  /* Previne zoom indesejado em inputs no iOS */
+  -webkit-text-size-adjust: 100%;
+}
+
+ul,
+ol {
+  list-style: none;
+  margin-block: 0;
+  padding-inline: 0;
 }
 
 a {
-    text-decoration: none;
-    color: inherit;
+  text-decoration: none;
+  color: inherit;
 }
 
 a:visited {
-    color: inherit;
+  color: inherit;
 }
 
-img {
-    display: block;
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+button {
+  cursor: pointer;
+  font: inherit;
+  background: transparent;
+  border: none;
+}
+
+/* Foco visível para acessibilidade — nunca remova sem substituir */
+:focus-visible {
+  outline: 2px solid #00F4BF;
+  outline-offset: 3px;
+  border-radius: 4px;
 }

@@ -1,51 +1,150 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AluGames</title>
-    <link rel="stylesheet" href="css/main.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="AluGames — alugue boardgames com facilidade. Plataforma simples e moderna para controle de jogos alugados.">
+  <title>AluGames — Aluguel de Boardgames</title>
+  <link rel="stylesheet" href="css/main.css">
 </head>
 
-<body class="body">
-    <main class="container main">
-        <img src="img/logo.svg" alt="Logo AluGames">
-        <section class="divisor">
-            <div class="divisor__line"></div>
-            <img src="img/fade_bar.svg" alt="Visual bar" class="divisor__bar">
-            <div class="divisor__line"></div>
-        </section>
-        <h1 class="page-title">Aluguel de <span class="page-title__emphasis">boardgames</span></h1>
-        <section class="dashboard">
-            <ul class="dashboard__items">
-                <li class="dashboard__items__item" id="game-1">
-                    <div class="dashboard__item__img">
-                        <img src="img/monopoly.png" alt="Capa jogo Monopoly">
-                    </div>
-                    <p class="dashboard__item__name">Monopoly</p>
-                    <a onclick="alterarStatus(1)" href="#" class="dashboard__item__button">Alugar</a>
-                </li>
-                <li class="dashboard__items__item" id="game-2">
-                    <div class="dashboard__item__img">
-                        <img src="img/ticket_to_ride.png" alt="Capa jogo Ticket to Ride">
-                    </div>
-                    <p class="dashboard__item__name">Ticket to Ride</p>
-                    <a onclick="alterarStatus(2)" href="#" class="dashboard__item__button">Alugar</a>
-                </li>
-                <li class="dashboard__items__item" id="game-3">
-                    <div class="dashboard__item__img dashboard__item__img--rented">
-                        <img src="img/takenoko.png" alt="Capa jogo Takenoko">
-                    </div>
-                    <p class="dashboard__item__name">Takenoko</p>
-                    <a onclick="alterarStatus(3)" href="#" class="dashboard__item__button dashboard__item__button--return">Devolver</a>
-                </li>
-            </ul>
-        </section>
-        <img src="img/hachuras.svg" alt="Visual hachuras" class="hachuras">
-    </main>
+<body>
 
-    <script src="js/app.js"></script>
+  <!-- ===== CABEÇALHO ===== -->
+  <header class="header">
+    <div class="header__inner">
+      <img src="img/logo.svg" alt="Logo AluGames" class="header__logo">
+      <div class="header__status" id="status-badge" aria-live="polite">
+        <span class="header__status-dot"></span>
+        <span class="header__status-text" id="status-text">0 jogos alugados</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== CONTEÚDO PRINCIPAL ===== -->
+  <main class="main">
+
+    <!-- Divisor decorativo -->
+    <section class="divisor" aria-hidden="true">
+      <div class="divisor__line"></div>
+      <img src="img/fade_bar.svg" alt="" class="divisor__bar">
+      <div class="divisor__line"></div>
+    </section>
+
+    <!-- Título da página -->
+    <h1 class="page-title">
+      Aluguel de <span class="page-title__emphasis">boardgames</span>
+    </h1>
+
+    <!-- Contador global -->
+    <div class="counter-bar">
+      <div class="counter-bar__item">
+        <span class="counter-bar__number" id="total-jogos">3</span>
+        <span class="counter-bar__label">jogos no catálogo</span>
+      </div>
+      <div class="counter-bar__divider"></div>
+      <div class="counter-bar__item">
+        <span class="counter-bar__number counter-bar__number--highlight" id="total-alugados">0</span>
+        <span class="counter-bar__label">alugados agora</span>
+      </div>
+      <div class="counter-bar__divider"></div>
+      <div class="counter-bar__item">
+        <span class="counter-bar__number counter-bar__number--available" id="total-disponiveis">3</span>
+        <span class="counter-bar__label">disponíveis</span>
+      </div>
+    </div>
+
+    <!-- Dashboard de jogos -->
+    <section class="dashboard" aria-label="Catálogo de boardgames">
+      <ul class="dashboard__list">
+
+        <!-- Jogo 1: Monopoly -->
+        <li class="game-card" id="game-1" data-game-name="Monopoly">
+          <div class="game-card__img-wrapper">
+            <img src="img/monopoly.png" alt="Capa do jogo Monopoly" class="game-card__img">
+            <div class="game-card__overlay" aria-hidden="true">
+              <span class="game-card__overlay-text">Alugado</span>
+            </div>
+            <div class="game-card__badge game-card__badge--available">Disponível</div>
+          </div>
+          <div class="game-card__info">
+            <p class="game-card__name">Monopoly</p>
+            <p class="game-card__genre">Estratégia · Clássico</p>
+          </div>
+          <button
+            class="game-card__btn game-card__btn--rent"
+            onclick="alterarStatus(1)"
+            aria-label="Alugar Monopoly"
+          >
+            Alugar
+          </button>
+        </li>
+
+        <!-- Jogo 2: Ticket to Ride -->
+        <li class="game-card" id="game-2" data-game-name="Ticket to Ride">
+          <div class="game-card__img-wrapper">
+            <img src="img/ticket_to_ride.png" alt="Capa do jogo Ticket to Ride" class="game-card__img">
+            <div class="game-card__overlay" aria-hidden="true">
+              <span class="game-card__overlay-text">Alugado</span>
+            </div>
+            <div class="game-card__badge game-card__badge--available">Disponível</div>
+          </div>
+          <div class="game-card__info">
+            <p class="game-card__name">Ticket to Ride</p>
+            <p class="game-card__genre">Aventura · Família</p>
+          </div>
+          <button
+            class="game-card__btn game-card__btn--rent"
+            onclick="alterarStatus(2)"
+            aria-label="Alugar Ticket to Ride"
+          >
+            Alugar
+          </button>
+        </li>
+
+        <!-- Jogo 3: Takenoko (já alugado) -->
+        <li class="game-card game-card--rented" id="game-3" data-game-name="Takenoko">
+          <div class="game-card__img-wrapper">
+            <img src="img/takenoko.png" alt="Capa do jogo Takenoko" class="game-card__img">
+            <div class="game-card__overlay game-card__overlay--active" aria-hidden="true">
+              <span class="game-card__overlay-text">Alugado</span>
+            </div>
+            <div class="game-card__badge game-card__badge--rented">Alugado</div>
+          </div>
+          <div class="game-card__info">
+            <p class="game-card__name">Takenoko</p>
+            <p class="game-card__genre">Estratégia · Temático</p>
+          </div>
+          <button
+            class="game-card__btn game-card__btn--return"
+            onclick="alterarStatus(3)"
+            aria-label="Devolver Takenoko"
+          >
+            Devolver
+          </button>
+        </li>
+
+      </ul>
+    </section>
+
+    <!-- Rodapé decorativo -->
+    <img src="img/hachuras.svg" alt="" class="hachuras" aria-hidden="true">
+
+  </main>
+
+  <!-- ===== RODAPÉ ===== -->
+  <footer class="footer">
+    <p class="footer__text">
+      Feito com <span class="footer__heart" aria-label="amor">♥</span> durante o curso de JavaScript na
+      <a href="https://www.alura.com.br" target="_blank" rel="noopener noreferrer" class="footer__link">Alura</a>
+    </p>
+  </footer>
+
+  <!-- Toast de notificação -->
+  <div class="toast" id="toast" role="alert" aria-live="assertive"></div>
+
+  <script src="js/app.js"></script>
 </body>
 
 </html>

@@ -1,137 +1,677 @@
+/* ==========================================================================
+   MAIN CSS — AluGames
+   Importações, variáveis e todos os estilos da aplicação.
+   ========================================================================== */
+
 @import url(_reset.css);
-@import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@700&family=Inter:wght@600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@600;700&family=Outfit:wght@300;400;500;600;700&display=swap');
 
-.body {
-    color: #FFFFFF;
+/* ==========================================================================
+   VARIÁVEIS GLOBAIS (Design Tokens)
+   Centraliza todas as cores, fontes e medidas para fácil manutenção.
+   ========================================================================== */
+:root {
+  /* Paleta de cores */
+  --cor-fundo:          #01080E;
+  --cor-fundo-card:     rgba(255, 255, 255, 0.05);
+  --cor-fundo-card-hover: rgba(255, 255, 255, 0.09);
+  --cor-borda:          rgba(0, 244, 191, 0.25);
+  --cor-borda-hover:    rgba(0, 244, 191, 0.55);
+  --cor-verde:          #00F4BF;
+  --cor-verde-dim:      rgba(0, 244, 191, 0.12);
+  --cor-azul:           #505EFF;
+  --cor-azul-bright:    #1875E8;
+  --cor-azul-dim:       rgba(80, 94, 255, 0.18);
+  --cor-vermelho:       #FF4D6D;
+  --cor-vermelho-dim:   rgba(255, 77, 109, 0.15);
+  --cor-texto:          #FFFFFF;
+  --cor-texto-sec:      rgba(255, 255, 255, 0.55);
+  --cor-texto-terc:     rgba(255, 255, 255, 0.3);
 
-    min-height: 100vh;
+  /* Tipografia */
+  --fonte-display: 'Chakra Petch', sans-serif;
+  --fonte-corpo:   'Outfit', sans-serif;
 
-    background: rgb(0, 0, 0);
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(1, 8, 14, 1) 25%, rgba(80, 94, 255, 0.85) 50%, rgba(1, 8, 14, 1) 75%, rgba(0, 0, 0, 1) 100%);
-    background-repeat: no-repeat;
-    background-attachment: fixed;
+  /* Espaçamentos */
+  --espaco-xs:  0.5rem;
+  --espaco-sm:  1rem;
+  --espaco-md:  1.5rem;
+  --espaco-lg:  2.5rem;
+  --espaco-xl:  4rem;
 
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+  /* Bordas */
+  --radius-sm:  0.75rem;
+  --radius-md:  1rem;
+  --radius-lg:  1.5rem;
+  --radius-xl:  2rem;
 
-    padding: 2rem;
+  /* Transições */
+  --transicao: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  --transicao-lenta: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-@media screen and (min-width: 1440px) {
-    .body {
-        padding: 2rem calc((100vw - 1086px)/2);
-    }
+/* ==========================================================================
+   BASE — BODY E FUNDO
+   ========================================================================== */
+body {
+  font-family: var(--fonte-corpo);
+  color: var(--cor-texto);
+  background-color: var(--cor-fundo);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+
+  /* Gradiente de fundo dinâmico */
+  background-image:
+    radial-gradient(ellipse 80% 50% at 50% -10%, rgba(80, 94, 255, 0.25) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 40% at 80% 80%, rgba(0, 244, 191, 0.08) 0%, transparent 50%);
+  background-attachment: fixed;
 }
 
+/* ==========================================================================
+   HEADER
+   ========================================================================== */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(1, 8, 14, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--cor-borda);
+  padding: var(--espaco-sm) var(--espaco-lg);
+}
+
+.header__inner {
+  max-width: 1086px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--espaco-sm);
+}
+
+.header__logo {
+  height: 40px;
+  width: auto;
+}
+
+.header__status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--cor-verde-dim);
+  border: 1px solid var(--cor-borda);
+  border-radius: 50px;
+  padding: 6px 14px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--cor-verde);
+  letter-spacing: 0.04em;
+  transition: var(--transicao);
+}
+
+.header__status-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--cor-verde);
+  box-shadow: 0 0 8px var(--cor-verde);
+  animation: piscar 2s ease-in-out infinite;
+  flex-shrink: 0;
+}
+
+@keyframes piscar {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.3; }
+}
+
+/* ==========================================================================
+   MAIN — LAYOUT CENTRAL
+   ========================================================================== */
 .main {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 var(--espaco-lg) var(--espaco-xl);
+  max-width: 1086px;
+  margin: 0 auto;
+  width: 100%;
 }
 
+/* ==========================================================================
+   DIVISOR DECORATIVO
+   ========================================================================== */
 .divisor {
-    display: flex;
-    gap: 53px;
-    align-items: center;
-
-    margin: 88px 0px 40px;
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+  margin: var(--espaco-xl) 0 var(--espaco-lg);
+  width: 100%;
 }
 
 .divisor__line {
-    height: 1px;
-    width: 282px;
-    background-color: #00F4BF;
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--cor-verde), transparent);
+  opacity: 0.5;
 }
 
-.page-title {
-    font-family: 'Chakra Petch', sans-serif;
-    font-weight: 700;
-    font-size: 5rem;
+.divisor__bar {
+  flex-shrink: 0;
+}
 
-    margin-bottom: 2.5rem;
+/* ==========================================================================
+   TÍTULO DA PÁGINA
+   ========================================================================== */
+.page-title {
+  font-family: var(--fonte-display);
+  font-size: clamp(2.2rem, 6vw, 5rem);
+  font-weight: 700;
+  line-height: 1.1;
+  text-align: center;
+  margin-bottom: var(--espaco-lg);
+  letter-spacing: -0.02em;
 }
 
 .page-title__emphasis {
-    color: #505EFF;
+  color: var(--cor-azul);
+  display: block;
 }
 
+/* ==========================================================================
+   BARRA DE CONTADORES
+   ========================================================================== */
+.counter-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--espaco-md);
+  background: var(--cor-fundo-card);
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--radius-xl);
+  padding: var(--espaco-sm) var(--espaco-lg);
+  margin-bottom: var(--espaco-lg);
+  width: 100%;
+  max-width: 600px;
+}
+
+.counter-bar__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.counter-bar__number {
+  font-family: var(--fonte-display);
+  font-size: 1.8rem;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--cor-texto);
+  transition: var(--transicao);
+}
+
+.counter-bar__number--highlight {
+  color: var(--cor-azul);
+}
+
+.counter-bar__number--available {
+  color: var(--cor-verde);
+}
+
+.counter-bar__label {
+  font-size: 0.72rem;
+  color: var(--cor-texto-sec);
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.counter-bar__divider {
+  width: 1px;
+  height: 40px;
+  background: var(--cor-borda);
+  flex-shrink: 0;
+}
+
+/* ==========================================================================
+   DASHBOARD — GRID DE CARDS
+   ========================================================================== */
 .dashboard {
-    background-color: rgba(255, 255, 255, 0.1);
-
-    border-radius: 2rem;
-    border-width: 1px;
-    border-style: solid;
-    border-color: #00F4BF;
-
-    padding: 3rem;
-    width: 100%;
+  background: var(--cor-fundo-card);
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--radius-xl);
+  padding: var(--espaco-lg);
+  width: 100%;
 }
 
-.dashboard__items {
-    display: flex;
-    justify-content: space-between;
+.dashboard__list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: var(--espaco-md);
 }
 
-.dashboard__items__item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-
-    font-family: 'Inter', sans-serif;
+/* ==========================================================================
+   GAME CARD — CARD DE JOGO INDIVIDUAL
+   ========================================================================== */
+.game-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: var(--cor-fundo-card);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-lg);
+  padding: var(--espaco-md);
+  gap: var(--espaco-sm);
+  transition: var(--transicao-lenta);
+  position: relative;
+  overflow: hidden;
 }
 
-.dashboard__item__img {
-    box-shadow: 0px 0px 24px 8px rgba(24, 118, 232, 0.25);
-
-    margin-bottom: 1rem;
+.game-card::before {
+  /* Linha de brilho no topo do card — aparece no hover */
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 15%;
+  right: 15%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--cor-verde), transparent);
+  opacity: 0;
+  transition: var(--transicao);
 }
 
-.dashboard__item__img--rented {
-    position: relative;
+.game-card:hover {
+  background: var(--cor-fundo-card-hover);
+  border-color: var(--cor-borda-hover);
+  transform: translateY(-4px);
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.4), 0 0 32px rgba(80, 94, 255, 0.1);
 }
 
-.dashboard__item__img--rented::after {
-    content: "";
-    display: block;
-    width: 100%;
-    height: 100%;
-
-    position: absolute;
-    top: 0;
-    
-    background-color: rgba(1, 8, 14, 0.4);
+.game-card:hover::before {
+  opacity: 1;
 }
 
-.dashboard__item__name {
-    font-weight: 600;
-    font-size: 2rem;
-
-    margin-bottom: 2.5rem;
+/* Estado alugado do card inteiro */
+.game-card--rented {
+  border-color: rgba(255, 77, 109, 0.25);
 }
 
-.dashboard__item__button {
-    display: flex;
-    justify-content: center;
-
-    font-weight: 700;
-    font-size: 1.5rem;
-
-    padding: 1rem 1.5rem;
-    min-width: 13rem;
-
-    border-radius: 1rem;
-
-    background-color: #1875E8;
+.game-card--rented::before {
+  background: linear-gradient(90deg, transparent, var(--cor-vermelho), transparent);
+  opacity: 0.5;
 }
 
-.dashboard__item__button--return {
-    background-color: #01080E;
+/* ==========================================================================
+   IMAGEM DO JOGO
+   ========================================================================== */
+.game-card__img-wrapper {
+  position: relative;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(24, 118, 232, 0.2);
+  width: 100%;
+  aspect-ratio: 1 / 1;
 }
 
+.game-card__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: var(--transicao-lenta);
+}
+
+.game-card:hover .game-card__img {
+  transform: scale(1.04);
+}
+
+/* Overlay escurecido quando alugado */
+.game-card__overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(1, 8, 14, 0.75);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: var(--transicao);
+}
+
+.game-card__overlay--active {
+  opacity: 1;
+}
+
+.game-card__overlay-text {
+  font-family: var(--fonte-display);
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--cor-vermelho);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  transform: rotate(-5deg);
+}
+
+/* Badge de status no canto da imagem */
+.game-card__badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 50px;
+  pointer-events: none;
+}
+
+.game-card__badge--available {
+  background: var(--cor-verde-dim);
+  color: var(--cor-verde);
+  border: 1px solid rgba(0, 244, 191, 0.35);
+}
+
+.game-card__badge--rented {
+  background: var(--cor-vermelho-dim);
+  color: var(--cor-vermelho);
+  border: 1px solid rgba(255, 77, 109, 0.35);
+}
+
+/* ==========================================================================
+   INFORMAÇÕES DO JOGO
+   ========================================================================== */
+.game-card__info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  width: 100%;
+}
+
+.game-card__name {
+  font-family: var(--fonte-display);
+  font-size: 1.25rem;
+  font-weight: 700;
+  text-align: center;
+}
+
+.game-card__genre {
+  font-size: 0.78rem;
+  color: var(--cor-texto-sec);
+  font-weight: 400;
+  letter-spacing: 0.03em;
+}
+
+/* ==========================================================================
+   BOTÕES DE AÇÃO
+   ========================================================================== */
+.game-card__btn {
+  width: 100%;
+  padding: 0.85rem 1.25rem;
+  border-radius: var(--radius-md);
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  transition: var(--transicao);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Efeito de brilho ao passar o mouse (shimmer) */
+.game-card__btn::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.08) 50%, transparent 100%);
+  transform: translateX(-100%);
+  transition: transform 0.45s ease;
+}
+
+.game-card__btn:hover::after {
+  transform: translateX(100%);
+}
+
+.game-card__btn--rent {
+  background: var(--cor-azul-bright);
+  color: #fff;
+  box-shadow: 0 4px 20px rgba(24, 117, 232, 0.35);
+}
+
+.game-card__btn--rent:hover {
+  background: #2589FF;
+  box-shadow: 0 6px 28px rgba(24, 117, 232, 0.55);
+  transform: translateY(-1px);
+}
+
+.game-card__btn--rent:active {
+  transform: translateY(0);
+}
+
+.game-card__btn--return {
+  background: var(--cor-vermelho-dim);
+  color: var(--cor-vermelho);
+  border: 1px solid rgba(255, 77, 109, 0.35);
+}
+
+.game-card__btn--return:hover {
+  background: rgba(255, 77, 109, 0.25);
+  transform: translateY(-1px);
+}
+
+/* ==========================================================================
+   HACHURAS DECORATIVAS
+   ========================================================================== */
 .hachuras {
-    margin-top: 1.5rem;
-    margin-right: 33px;
-    align-self: flex-end;
+  margin-top: var(--espaco-md);
+  margin-right: 33px;
+  align-self: flex-end;
+  opacity: 0.6;
+}
+
+/* ==========================================================================
+   FOOTER
+   ========================================================================== */
+.footer {
+  text-align: center;
+  padding: var(--espaco-md) var(--espaco-lg);
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  margin-top: auto;
+}
+
+.footer__text {
+  font-size: 0.82rem;
+  color: var(--cor-texto-terc);
+  font-weight: 300;
+}
+
+.footer__heart {
+  color: var(--cor-vermelho);
+  display: inline-block;
+  animation: pulsacao 1.2s ease-in-out infinite;
+}
+
+@keyframes pulsacao {
+  0%, 100% { transform: scale(1); }
+  15%       { transform: scale(1.3); }
+  30%       { transform: scale(1); }
+  45%       { transform: scale(1.15); }
+}
+
+.footer__link {
+  color: var(--cor-verde);
+  font-weight: 500;
+  transition: opacity var(--transicao);
+}
+
+.footer__link:hover {
+  opacity: 0.75;
+}
+
+/* ==========================================================================
+   TOAST — NOTIFICAÇÃO
+   ========================================================================== */
+.toast {
+  position: fixed;
+  bottom: var(--espaco-lg);
+  left: 50%;
+  transform: translateX(-50%) translateY(120px);
+  background: rgba(10, 20, 35, 0.95);
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--radius-md);
+  padding: var(--espaco-sm) var(--espaco-md);
+  font-size: 0.9rem;
+  font-weight: 500;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  z-index: 1000;
+  white-space: nowrap;
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.3s ease;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.toast--visible {
+  transform: translateX(-50%) translateY(0);
+  opacity: 1;
+}
+
+.toast--success { color: var(--cor-verde); border-color: rgba(0, 244, 191, 0.35); }
+.toast--info    { color: var(--cor-azul-bright); border-color: rgba(24, 117, 232, 0.35); }
+
+/* ==========================================================================
+   ANIMAÇÃO DE ENTRADA DOS CARDS
+   ========================================================================== */
+@keyframes entrar {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.game-card {
+  animation: entrar 0.5s ease both;
+}
+
+.game-card:nth-child(1) { animation-delay: 0.1s; }
+.game-card:nth-child(2) { animation-delay: 0.2s; }
+.game-card:nth-child(3) { animation-delay: 0.3s; }
+
+/* ==========================================================================
+   RESPONSIVIDADE
+   ========================================================================== */
+
+/* Telas grandes — aproveita mais espaço horizontal */
+@media (min-width: 1440px) {
+  .main {
+    max-width: 1200px;
+    padding: 0 var(--espaco-xl) var(--espaco-xl);
+  }
+}
+
+/* Tablets — ajusta padding e tamanho de fonte */
+@media (max-width: 900px) {
+  .header {
+    padding: var(--espaco-sm) var(--espaco-md);
+  }
+
+  .main {
+    padding: 0 var(--espaco-md) var(--espaco-lg);
+  }
+
+  .divisor {
+    margin: var(--espaco-lg) 0 var(--espaco-md);
+    gap: 1.5rem;
+  }
+
+  .dashboard {
+    padding: var(--espaco-md);
+  }
+
+  .counter-bar {
+    gap: var(--espaco-sm);
+    padding: var(--espaco-sm);
+  }
+}
+
+/* Celulares — layout empilhado */
+@media (max-width: 600px) {
+  .header__logo {
+    height: 30px;
+  }
+
+  .header__status-text {
+    display: none; /* Mostra apenas o ponto piscante no mobile */
+  }
+
+  .divisor {
+    gap: 1rem;
+  }
+
+  .divisor__bar {
+    width: 60px;
+  }
+
+  .dashboard {
+    padding: var(--espaco-sm);
+    border-radius: var(--radius-lg);
+  }
+
+  .dashboard__list {
+    grid-template-columns: 1fr;
+    gap: var(--espaco-sm);
+  }
+
+  .game-card {
+    flex-direction: row;
+    align-items: center;
+    padding: var(--espaco-sm);
+    gap: var(--espaco-sm);
+  }
+
+  .game-card__img-wrapper {
+    width: 80px;
+    height: 80px;
+    aspect-ratio: unset;
+    flex-shrink: 0;
+    border-radius: var(--radius-sm);
+  }
+
+  .game-card__info {
+    flex: 1;
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .game-card__name {
+    font-size: 1rem;
+    text-align: left;
+  }
+
+  .game-card__btn {
+    padding: 0.65rem 1rem;
+    font-size: 0.82rem;
+    width: auto;
+    flex-shrink: 0;
+  }
+
+  .counter-bar {
+    border-radius: var(--radius-lg);
+  }
+
+  .counter-bar__number {
+    font-size: 1.4rem;
+  }
+
+  .hachuras {
+    display: none;
+  }
+
+  .toast {
+    white-space: normal;
+    text-align: center;
+    max-width: calc(100vw - 2rem);
+    bottom: var(--espaco-sm);
+  }
 }
