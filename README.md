@@ -43,8 +43,6 @@ O projeto aplica **manipulação do DOM**, **controle de estado via classes CSS*
 
 ## 🖥️ Demonstração
 
-> _Adicione aqui um GIF ou print da aplicação funcionando._
-
 ```
 [ Screenshot da tela inicial ]
 ```
@@ -53,7 +51,7 @@ O projeto aplica **manipulação do DOM**, **controle de estado via classes CSS*
 [ Screenshot após alugar um jogo ]
 ```
 
-**[🔗 Ver demonstração ao vivo](#)** ← _Adicione o link do GitHub Pages aqui_
+**[🔗[ Ver demonstração ao vivo](https://alugames-alpha-red.vercel.app/)](#)** 
 
 ---
 
